@@ -19,6 +19,15 @@ configViewEngine(app);
 app.use('/', webRoutes);
 
 
-app.listen(post, () => {
-    console.log(`Example app ${post}`)
-})
+(async () => {
+    try {
+        await connection();
+        app.listen(post, () => {
+            console.log(`Example app ${post}`)
+        })
+    } catch (error) {
+        console.log('>>>Error connection to: ', error);
+    }
+})()
+
+
